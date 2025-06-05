@@ -230,7 +230,7 @@ const Blog6 = () => {
           
           <div className="relative group">
             <img
-              src="/images/VoIP.webp"
+              src="/images/voip.webp"
               alt="Tech buyer's journey"
               className="mx-auto rounded-xl shadow-xl mb-8 w-full max-w-5xl aspect-[13/7] object-cover transform transition-all duration-700 group-hover:scale-[1.02] group-hover:shadow-xl"
             />
@@ -712,19 +712,7 @@ const Blog6 = () => {
 
         
 
-          <div className="mt-8 group">
-            <div className="relative overflow-hidden rounded-2xl shadow-xl">
-              <img
-                src="/images/VoIP.webp"
-                alt="VoIP"
-                className="mx-auto w-full max-w-2xl  object-cover transform transition-all duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                <p className="text-white text-lg font-medium">Making informed tech decisions with Compare Bazaar</p>
-              </div>
-            </div>
-            <p className="text-center text-sm text-gray-500 mt-2">Hover to see details</p>
-          </div>
+          
         </div>
 
 
