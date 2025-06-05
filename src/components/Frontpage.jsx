@@ -92,7 +92,7 @@ export default function BlogLayout() {
       date: "May 12, 2025",
       readTime: "7 min read",
       category: "DeFi",
-      imageUrl: "https://blogs.compare-bazaar.com/images/techbuyer.webp",
+      imageUrl: "https://blogs.compare-bazaar.com/images/blog4.webp",
      slug: "/buyer-journey",
       views: Math.floor(Math.random() * 500 + 100),
       likes: Math.floor(Math.random() * 200 + 50)
@@ -103,7 +103,7 @@ export default function BlogLayout() {
       date: "June 5, 2025",
       readTime: "5 min read",
       category: "Informative",
-      imageUrl: "https://blogs.compare-bazaar.com/images/Payroll.webp",
+      imageUrl: "https://blogs.compare-bazaar.com/images/blog3.webp",
       slug: "/AI-in-HR-Payroll",
       views: Math.floor(Math.random() * 500 + 100),
       likes: Math.floor(Math.random() * 200 + 50)
