@@ -125,7 +125,7 @@ export default function BlogLayout() {
       date: "June 3, 2025",
       readTime: "5 min read",
       category: "Informative",
-      imageUrl: "https://th.bing.com/th/id/OIP.hz30-amlv3X95J3WzWzoCQHaHQ?r=0&rs=1&pid=ImgDetMain",
+      imageUrl: "https://blogs.compare-bazaar.com/images/blog5.webp",
       slug: "/fleet-management-system-2025",
       views: Math.floor(Math.random() * 500 + 100),
       likes: Math.floor(Math.random() * 200 + 50)
@@ -136,7 +136,7 @@ export default function BlogLayout() {
       date: "June 4, 2025",
       readTime: "5 min read",
       category: "Informative",
-      imageUrl: "https://www.apexhours.com/wp-content/uploads/2024/01/Difference-between-Salesforce-vs.-HubSpot-vs.-Zoho.jpg",
+      imageUrl: "https://blogs.compare-bazaar.com/images/blog6.webp",
       slug: "/salesforce-vs-hubspot-vs-zoho",
       views: Math.floor(Math.random() * 500 + 100),
       likes: Math.floor(Math.random() * 200 + 50)
@@ -147,7 +147,7 @@ export default function BlogLayout() {
       date: "June 5, 2025",
       readTime: "5 min read",
       category: "Informative",
-      imageUrl: "https://th.bing.com/th/id/OIP.zkMVHoOnG3wmiIZJs1GE5AAAAA?r=0&rs=1&pid=ImgDetMain",
+      imageUrl: "https://blogs.compare-bazaar.com/images/blog7.webp",
       slug: "/crm-gdpr-compliance-guide",
       views: Math.floor(Math.random() * 500 + 100),
       likes: Math.floor(Math.random() * 200 + 50)
