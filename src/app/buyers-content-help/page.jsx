@@ -131,7 +131,6 @@ const Blog1 = () => {
         <title>How Comparison Quotes, Reviews, and Articles Help a Tech Buyer's Journey</title>
         <meta property="og:title" content="How Comparison Quotes, Reviews, and Articles Help a Tech Buyer's Journey" />
         <meta property="og:description" content="Making smart decisions in a noisy digital marketplace" />
-       
         <meta property="og:url" content={currentUrl} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Compare Bazaar" />
@@ -230,7 +229,7 @@ const Blog1 = () => {
           
           <div className="relative group">
             <img
-              src="/images/blog1.jpg"
+              src="https://blogs.compare-bazaar.com/images/blog1.jpg"
               alt="Tech buyer's journey"
               className="mx-auto rounded-xl shadow-2xl mb-8 w-full max-w-5xl aspect-[13/7] object-cover transform transition-all duration-700 group-hover:scale-[1.02] group-hover:shadow-2xl"
             />
