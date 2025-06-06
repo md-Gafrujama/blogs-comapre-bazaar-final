@@ -251,24 +251,24 @@ export default function BlogLayout() {
               <div className="lg:w-2/3 text-center lg:text-left">
                 <div className="mb-6">
                   <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-sm font-semibold border border-white/30 shadow-lg animate-bounce hover:animate-none hover:scale-105 transition-transform hover:bg-white/30 interactive">
-                    🚀 Web3 Insights Hub
+                    🚀 Web3 Unlocked
                   </span>
                 </div>
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                <h1 className="text-5xl text-white mb-6 leading-tight">
                   <span className="inline-block bg-gradient-to-r from-[#64b5f6] via-[#42a5f5] to-[#90caf9] bg-clip-text text-transparent animate-gradient">
-                    Future Tech
+                    Procurement Insights 
                   </span>{' '}
-                  <span className="inline-block bg-gradient-to-r from-[#ff9a3c] via-[#ff8633] to-[#ff6f00] bg-clip-text text-transparent animate-gradient delay-100">
-                    Insights
+                  <span className="inline-block bg-[#ff8633] bg-clip-text text-transparent animate-gradient delay-100">
+                   & Vendor Comparison Tips | Compare-Bazaar Blog
                   </span>
                 </h1>
-                <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-3xl">
-                  Explore the cutting-edge world of Web3, blockchain, AI, and decentralized technologies through our comprehensive guides and expert analysis.
+                <p className="text-lg text-white/90 mb-8 leading-relaxed max-w-3xl">
+                  Explore expert-driven insights on vendor selection, procurement strategies, and cost-saving comparisons. Stay informed with the Compare-Bazaar Blog
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <button 
                     onClick={() => document.getElementById('blog-section').scrollIntoView({ behavior: 'smooth' })}
-                    className="px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-[#000e54] to-[#1a237e] text-white font-medium rounded-lg hover:from-[#1a237e] hover:to-[#303f9f] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group relative overflow-hidden interactive"
+                    className="px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-[#000e54] to-[#1a237e] cursor-pointer text-white font-medium rounded-lg hover:from-[#1a237e] hover:to-[#303f9f] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group relative overflow-hidden interactive"
                   >
                     <span className="relative z-10">🔍 Explore Articles</span>
                     <svg className="w-5 h-5 group-hover:translate-y-0.5 transition-transform relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -276,7 +276,7 @@ export default function BlogLayout() {
                     </svg>
                     <span className="absolute inset-0 bg-gradient-to-r from-[#1a237e] to-[#303f9f] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   </button>
-                  <button className="px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-[#ff9a3c] to-[#ff6f00] text-white font-medium rounded-lg hover:from-[#ff8633] hover:to-[#ff9a3c] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group relative overflow-hidden interactive">
+                  <button className="px-6 py-3 sm:px-8 sm:py-4 bg-[#ff8633] cursor-pointer text-white font-medium rounded-lg hover:from-[#ff8633] hover:to-[#ff9a3c] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group relative overflow-hidden interactive">
                     <span className="relative z-10">🌐 Join Community</span>
                     <svg className="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -356,7 +356,7 @@ export default function BlogLayout() {
                           className={`w-full px-4 py-3 rounded-lg font-medium transition-all duration-300 relative overflow-hidden ${
                             isLoading 
                               ? 'bg-gray-500/50 text-gray-300 cursor-not-allowed' 
-                              : 'bg-gradient-to-r from-[#ff9a3c] to-[#ff6f00] text-white hover:from-[#ff8633] hover:to-[#ff9a3c] shadow-lg hover:shadow-xl'
+                              : 'bg-[#ff8633] text-white hover:from-[#ff8633] hover:to-[#ff9a3c] shadow-lg hover:shadow-xl'
                           } flex items-center justify-center gap-2 interactive`}
                         >
                           <span className="relative z-10">
@@ -367,10 +367,12 @@ export default function BlogLayout() {
                               </>
                             ) : (
                               <>
+                                <div className='flex flex-row gap-2 cursor-pointer'>
                                 <span>Signup</span>
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-6 h-6 pt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                 </svg>
+                                </div>
                               </>
                             )}
                           </span>
@@ -395,12 +397,12 @@ export default function BlogLayout() {
         {/* Main Blog Content */}
         <div id="blog-section" className="container mx-auto px-4 md:px-8 py-12 md:py-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            <h2 className="text-4xl text-gray-800 mb-4">
               <span className="bg-gradient-to-r from-[#ff9a3c] via-[#ff8633] to-[#ff6f00] bg-clip-text text-transparent">
                 Latest Web3 & Tech Insights
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Discover the future of technology through our expert analysis</p>
+            <p className="text-lg text-gray-800 max-w-2xl mx-auto">Discover the future of technology through our expert analysis</p>
           </div>
 
           {/* Interactive Category Filter */}
@@ -428,7 +430,7 @@ export default function BlogLayout() {
           </div>
 
           {/* Enhanced Blog Grid with 3 cards fixed for all screen sizes */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {filteredPosts.map((post, index) => (
               <BlogCard 
                 key={post.id} 
@@ -665,7 +667,7 @@ function BlogCard({ post, index, hoveredCard, setHoveredCard, mouseX, mouseY }) 
             <span>{post.readTime}</span>
           </div>
           
-          <h3 className="text-lg font-bold text-gray-800 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors duration-300">
+          <h3 className="text-base text-gray-900 mb-3 line-clamp-2 group-hover:text-[#ff8633] transition-colors duration-300">
             {post.title}
           </h3>
           
@@ -687,26 +689,26 @@ function BlogCard({ post, index, hoveredCard, setHoveredCard, mouseX, mouseY }) 
     <div className="group relative inline-flex items-center px-8 py-3.5 overflow-hidden font-bold text-white transition-all duration-500 bg-black rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-purple-500/50 transform hover:scale-110 hover:-translate-y-2 cursor-pointer border border-gray-700 hover:border-purple-400">
       
       {/* Multiple background layers */}
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-900 via-blue-900 to-cyan-900 opacity-90 rounded-2xl"></div>
-      <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-all duration-700 rounded-2xl"></div>
+      <div className="absolute inset-0 bg-[#ff8633] opacity-90 rounded-xl"></div>
+      <div className="absolute inset-0 bg-[#ff8633] opacity-0 group-hover:opacity-100 transition-all duration-700 rounded-xl"></div>
       
       {/* Holographic sweep */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 transition-all duration-1000 group-hover:translate-x-full rounded-2xl"></div>
       
       {/* Glowing border effect */}
-      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 p-[1px]">
-        <div className="w-full h-full bg-black rounded-2xl"></div>
+      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[#ff8633] p-[1px]">
+        <div className="w-full h-full rounded-2xl"></div>
       </div>
       
       {/* Content */}
-      <span className="relative z-20 text-sm font-extrabold tracking-wider bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent group-hover:from-white group-hover:via-cyan-200 group-hover:to-purple-200 transition-all duration-500">
+      <span className="relative z-20 text-sm font-extrabold tracking-wider bg-[white] bg-clip-text text-transparent  transition-all duration-500">
         READ MORE
       </span>
       
       {/* Enhanced arrow with trail */}
       <div className="relative z-20 ml-3 w-6 h-6 transition-all duration-500 group-hover:translate-x-2 group-hover:scale-125">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full opacity-0 group-hover:opacity-60 blur-sm animate-pulse"></div>
-        <svg className="relative w-full h-full transition-all duration-500 group-hover:rotate-12 text-cyan-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="absolute inset-0  rounded-full opacity-0 group-hover:opacity-60 blur-sm animate-pulse"></div>
+        <svg className="relative w-full h-full transition-all duration-500 group-hover:rotate-12 text-white group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M13 7l5 5m0 0l-5 5m5-5H6" />
         </svg>
       </div>
