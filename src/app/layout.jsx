@@ -4,8 +4,10 @@ import Dropdown from '@/components/Dropdown';
 import WideDiv from '@/components/WideDiv';
 
 export const metadata = {
-  title: 'My Blog Site',
+  title: ' Blog-compare-bazaar',
   description: 'A modern Next.js blog',
+  icon: '/favicon.ico',
+ 
 };
 
 export default function RootLayout({ children }) {
