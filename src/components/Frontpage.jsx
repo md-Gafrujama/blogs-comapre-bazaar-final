@@ -151,6 +151,28 @@ export default function BlogLayout() {
       views: Math.floor(Math.random() * 500 + 100),
       likes: Math.floor(Math.random() * 200 + 50)
     },
+     {
+      id: 8,
+      title: "Future-Proofing Your Workforce: Why Investing in Modern HR & Payroll Systems Matters",
+      date: "June 5, 2025",
+      readTime: "5 min read",
+      category: "Informative",
+      imageUrl: "https://blogs.compare-bazaar.com/images/blog8.webp",
+      slug: "/Future-Proofing",
+      views: Math.floor(Math.random() * 500 + 100),
+      likes: Math.floor(Math.random() * 200 + 50)
+    },
+    {
+      id: 9,
+      title: "VoIP vs. UCaaS: What’s the Difference, and Which Is Right for You?",
+      date: "June 5, 2025",
+      readTime: "5 min read",
+      category: "Informative",
+      imageUrl: "https://blogs.compare-bazaar.com/images/blog9.webp",
+      slug: "/Voip-vs-UCaaS",
+      views: Math.floor(Math.random() * 500 + 100),
+      likes: Math.floor(Math.random() * 200 + 50)
+    },
    
   ];
 
@@ -251,7 +273,7 @@ export default function BlogLayout() {
               <div className="lg:w-2/3 text-center lg:text-left">
                 <div className="mb-6">
                   <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-sm font-semibold border border-white/30 shadow-lg animate-bounce hover:animate-none hover:scale-105 transition-transform hover:bg-white/30 interactive">
-                    🚀 Web3 Unlocked
+                   Marketing Matrix 🚀📊
                   </span>
                 </div>
                 <h1 className="text-5xl text-white mb-6 leading-tight">
@@ -399,10 +421,10 @@ export default function BlogLayout() {
           <div className="text-center mb-12">
             <h2 className="text-4xl text-gray-800 mb-4">
               <span className="bg-gradient-to-r from-[#ff9a3c] via-[#ff8633] to-[#ff6f00] bg-clip-text text-transparent">
-                Latest Web3 & Tech Insights
+             Featured Articles & Emerging Tech Insights
               </span>
             </h2>
-            <p className="text-lg text-gray-800 max-w-2xl mx-auto">Discover the future of technology through our expert analysis</p>
+            <p className="text-lg text-gray-800 max-w-2xl mx-auto">Explore expert-written blogs on digital marketing, emerging technologies, and industry trends — designed to help your business grow smarter and faster.</p>
           </div>
 
           {/* Interactive Category Filter */}
@@ -686,7 +708,7 @@ function BlogCard({ post, index, hoveredCard, setHoveredCard, mouseX, mouseY }) 
   <div className="flex items-center justify-between pt-6 px-1">
     
     {/* Enhanced Read More Button */}
-    <div className="group relative inline-flex items-center px-8 py-3.5 overflow-hidden font-bold text-white transition-all duration-500 bg-black rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-purple-500/50 transform hover:scale-110 hover:-translate-y-2 cursor-pointer border border-gray-700 hover:border-purple-400">
+    <div className="group relative inline-flex items-center px-8 py-3.5 overflow-hidden font-bold text-white transition-all duration-500 bg-black rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-purple-500/50 transform hover:scale-110 hover:-translate-y-2 cursor-pointer   ">
       
       {/* Multiple background layers */}
       <div className="absolute inset-0 bg-[#ff8633] opacity-90 rounded-xl"></div>
