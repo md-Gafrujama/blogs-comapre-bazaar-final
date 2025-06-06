@@ -267,16 +267,12 @@ export default function BlogLayout() {
             })}
           </div>
 
-           <div className="container mx-auto px-4 md:px-8 relative z-10">
+           <div className="container mx-auto px-4 md:px-8 relative z-10 ">
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
               {/* Left side - Main heading */}
               <div className="lg:w-2/3 text-center lg:text-left">
-                <div className="mb-6">
-                  <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-sm font-semibold border border-white/30 shadow-lg animate-bounce hover:animate-none hover:scale-105 transition-transform hover:bg-white/30 interactive">
-                   Marketing Matrix 🚀📊
-                  </span>
-                </div>
-                <h1 className="text-5xl text-white mb-6 leading-tight">
+                
+                <h1 className="text-5xl text-white mb-2 leading-tight">
                   <span className="inline-block bg-gradient-to-r from-[#64b5f6] via-[#42a5f5] to-[#90caf9] bg-clip-text text-transparent animate-gradient">
                     Procurement Insights 
                   </span>{' '}
@@ -308,11 +304,11 @@ export default function BlogLayout() {
                 </div>
                 
                 {/* Stats with counter animation */}
-                <div className="mt-10 flex flex-wrap gap-6 justify-center lg:justify-start">
+                {/* <div className="mt-10 flex flex-wrap gap-6 justify-center lg:justify-start">
                   <StatCounter endValue={500} label="Published Articles" duration={2} />
-                  <StatCounter endValue={50000} label="Monthly Readers" duration={2.5} />
+                  <StatCounter endValue={5000} label="Monthly Readers" duration={2.5} />
                   <StatCounter endValue={100} label="Industry Experts" duration={3} />
-                </div>
+                </div> */}
               </div>
 
               {/* Right side - Subscription Form */}
