@@ -272,7 +272,7 @@ export default function BlogLayout() {
               {/* Left side - Main heading */}
               <div className="lg:w-2/3 text-center lg:text-left">
                 
-                <h1 className="text-5xl text-white mb-2 leading-tight">
+                <h1 className="text-5xl text-white mb-6 leading-tight">
                   <span className="inline-block bg-gradient-to-r from-[#64b5f6] via-[#42a5f5] to-[#90caf9] bg-clip-text text-transparent animate-gradient">
                     Procurement Insights 
                   </span>{' '}
