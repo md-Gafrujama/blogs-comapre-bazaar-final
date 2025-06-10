@@ -180,7 +180,7 @@ export default function BlogLayout() {
       date: "June 10, 2025",
       readTime: "5 min read",
       category: "Informative",
-      imageUrl: "https://lh3.googleusercontent.com/YxmKRELAD4Ap6orKpCqMErwLUVRJwY1Y2NR_wsPwFDcN2TDnSEA-TopjWECa_ap79WR_j0XKfKycskUXbGLKuM4lAx_nOJeeSmQ=s0",
+      imageUrl: "https://blogs.compare-bazaar.com/images/blog10.webp",
       slug: "/software-vendor-selection-smb",
       views: Math.floor(Math.random() * 500 + 100),
       likes: Math.floor(Math.random() * 200 + 50)
@@ -192,7 +192,7 @@ export default function BlogLayout() {
       date: "June 9, 2025",
       readTime: "5 min read",
       category: "Informative",
-      imageUrl: "https://westmount.solutions/wp-content/uploads/2020/12/Cover_Blog_Enterprise-ready.png",
+      imageUrl: "https://blogs.compare-bazaar.com/images/blog11.webp",
       slug: "/enterprise-ready",
       views: Math.floor(Math.random() * 500 + 100),
       likes: Math.floor(Math.random() * 200 + 50)
