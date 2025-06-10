@@ -173,6 +173,30 @@ export default function BlogLayout() {
       views: Math.floor(Math.random() * 500 + 100),
       likes: Math.floor(Math.random() * 200 + 50)
     },
+
+        {
+      id: 10,
+      title: "How to Choose the Right Software Vendor for Your SMB",
+      date: "June 10, 2025",
+      readTime: "5 min read",
+      category: "Informative",
+      imageUrl: "https://lh3.googleusercontent.com/YxmKRELAD4Ap6orKpCqMErwLUVRJwY1Y2NR_wsPwFDcN2TDnSEA-TopjWECa_ap79WR_j0XKfKycskUXbGLKuM4lAx_nOJeeSmQ=s0",
+      slug: "/software-vendor-selection-smb",
+      views: Math.floor(Math.random() * 500 + 100),
+      likes: Math.floor(Math.random() * 200 + 50)
+    },
+    
+            {
+      id: 11,
+      title: "What Makes a Business Software ‘Enterprise-Ready’?",
+      date: "June 9, 2025",
+      readTime: "5 min read",
+      category: "Informative",
+      imageUrl: "https://westmount.solutions/wp-content/uploads/2020/12/Cover_Blog_Enterprise-ready.png",
+      slug: "/enterprise-ready",
+      views: Math.floor(Math.random() * 500 + 100),
+      likes: Math.floor(Math.random() * 200 + 50)
+    },
    
   ];
 
