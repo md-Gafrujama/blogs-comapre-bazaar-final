@@ -25,14 +25,7 @@ const Dropdown = ({ activeDropdown, isMobile, setActiveDropdown, activeNavItem }
         { name: "Best Payroll System", link: "https://www.compare-bazaar.com/BestPayrollSystem" }
       ]
     },
-    {
-      id: 'blog',
-      title: "Resources",
-      items: [
-        { name: "WhitePaper", link: "https://www.compare-bazaar.com/WhitePaper" },
-        { name: "Blogs", link: "https://blogs.compare-bazaar.com/" }
-      ]
-    },
+    
     {
       id: 'sales',
       title: "Sales",
@@ -40,6 +33,14 @@ const Dropdown = ({ activeDropdown, isMobile, setActiveDropdown, activeNavItem }
         { name: "Best CRM Software", link: "https://www.compare-bazaar.com/BestCRMSoftware" },
         { name: "Best Call Center Management Software", link: "https://www.compare-bazaar.com/Callcenter" },
         { name: "Best Project Management Software", link: "https://www.compare-bazaar.com/BestProjectManagement" }
+      ]
+    },
+    {
+      id: 'blog',
+      title: "Resources",
+      items: [
+        { name: "WhitePaper", link: "https://www.compare-bazaar.com/WhitePaper" },
+        { name: "Blogs", link: "https://blogs.compare-bazaar.com/" }
       ]
     },
     {

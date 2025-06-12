@@ -1,5 +1,6 @@
 "use client";
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import Head from 'next/head';
 
 export default function BlogLayout() {
   const [email, setEmail] = useState('');
@@ -13,8 +14,10 @@ export default function BlogLayout() {
   const [isScrolling, setIsScrolling] = useState(false);
   const heroRef = useRef(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
+    if (!email || isLoading) return;
+    
     setIsLoading(true);
     setError('');
     
@@ -48,53 +51,33 @@ export default function BlogLayout() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [email, isLoading]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-      setIsScrolling(true);
-      clearTimeout(window.scrollEndTimer);
-      window.scrollEndTimer = setTimeout(() => {
-        setIsScrolling(false);
-      }, 100);
-    };
-    
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  const blogPosts = [
+  // Memoized blog posts data
+  const blogPosts = useMemo(() => [
     {
-       id: 1,
-      title: "How Comparison Quotes, Reviews, and Articles Help a Tech Buyer’s Journey",
-      date: " May 28, 2024",
+      id: 1,
+      title: "How Comparison Quotes, Reviews, and Articles Help a Tech Buyer's Journey",
+      date: "May 28, 2024",
       readTime: "5 min read",
       category: "MarTech",
       imageUrl: "https://blogs.compare-bazaar.com/images/blog1.jpg",
       slug: "/buyers-content-help",
       views: Math.floor(Math.random() * 500 + 100),
-      likes: Math.floor(Math.random() * 200 + 50)
+      likes: Math.floor(Math.random() * 200 + 50),
+      description: "Learn how comparison content guides tech buyers through their purchasing journey with expert insights."
     },
     {
       id: 2,
-      title: "Tech Buyer And Its Decision Making Journey.",
+      title: "Tech Buyer And Its Decision Making Journey",
       date: "May 12, 2025",
       readTime: "7 min read",
       category: "DeFi",
       imageUrl: "https://blogs.compare-bazaar.com/images/blog4.webp",
-     slug: "/buyer-journey",
+      slug: "/buyer-journey",
       views: Math.floor(Math.random() * 500 + 100),
-      likes: Math.floor(Math.random() * 200 + 50)
+      likes: Math.floor(Math.random() * 200 + 50),
+      description: "Understanding the decision-making process of tech buyers in today's digital landscape."
     },
     {
       id: 3,
@@ -105,20 +88,22 @@ export default function BlogLayout() {
       imageUrl: "https://blogs.compare-bazaar.com/images/blog3.webp",
       slug: "/AI-in-HR-Payroll",
       views: Math.floor(Math.random() * 500 + 100),
-      likes: Math.floor(Math.random() * 200 + 50)
+      likes: Math.floor(Math.random() * 200 + 50),
+      description: "Explore how AI is transforming HR and payroll systems for the modern workforce."
     },
-   {
+    {
       id: 4,
-      title: "VoIP vs. Traditional Phone: What’s Right for Your Business?",
+      title: "VoIP vs. Traditional Phone: What's Right for Your Business?",
       date: "June 5, 2025",
       readTime: "5 min read",
       category: "Informative",
       imageUrl: "https://blogs.compare-bazaar.com/images/blog2.webp",
       slug: "/VoIP",
       views: Math.floor(Math.random() * 500 + 100),
-      likes: Math.floor(Math.random() * 200 + 50)
+      likes: Math.floor(Math.random() * 200 + 50),
+      description: "Compare VoIP and traditional phone systems to determine the best communication solution for your business."
     },
-            {
+    {
       id: 5,
       title: "Top 5 Things to Look for in a Fleet Management System in 2025",
       date: "June 3, 2025",
@@ -127,9 +112,10 @@ export default function BlogLayout() {
       imageUrl: "https://blogs.compare-bazaar.com/images/blog5.webp",
       slug: "/fleet-management-system-2025",
       views: Math.floor(Math.random() * 500 + 100),
-      likes: Math.floor(Math.random() * 200 + 50)
+      likes: Math.floor(Math.random() * 200 + 50),
+      description: "Key features to consider when selecting a fleet management system for your business."
     },
-            {
+    {
       id: 6,
       title: "Salesforce vs. HubSpot vs. Zoho: Which CRM Is Best for You?",
       date: "June 4, 2025",
@@ -138,9 +124,10 @@ export default function BlogLayout() {
       imageUrl: "https://blogs.compare-bazaar.com/images/blog6.webp",
       slug: "/salesforce-vs-hubspot-vs-zoho",
       views: Math.floor(Math.random() * 500 + 100),
-      likes: Math.floor(Math.random() * 200 + 50)
+      likes: Math.floor(Math.random() * 200 + 50),
+      description: "Comprehensive comparison of leading CRM platforms to help you make the right choice."
     },
-            {
+    {
       id: 7,
       title: "Is Your CRM GDPR-Compliant? What You Need to Know",
       date: "June 5, 2025",
@@ -149,9 +136,10 @@ export default function BlogLayout() {
       imageUrl: "https://blogs.compare-bazaar.com/images/blog7.webp",
       slug: "/crm-gdpr-compliance-guide",
       views: Math.floor(Math.random() * 500 + 100),
-      likes: Math.floor(Math.random() * 200 + 50)
+      likes: Math.floor(Math.random() * 200 + 50),
+      description: "Ensure your CRM system meets GDPR requirements with this essential compliance guide."
     },
-     {
+    {
       id: 8,
       title: "Future-Proofing Your Workforce: Why Investing in Modern HR & Payroll Systems Matters",
       date: "June 5, 2025",
@@ -160,21 +148,22 @@ export default function BlogLayout() {
       imageUrl: "https://blogs.compare-bazaar.com/images/blog8.webp",
       slug: "/Future-Proofing",
       views: Math.floor(Math.random() * 500 + 100),
-      likes: Math.floor(Math.random() * 200 + 50)
+      likes: Math.floor(Math.random() * 200 + 50),
+      description: "Discover the importance of modern HR and payroll systems for workforce future-proofing."
     },
     {
       id: 9,
-      title: "VoIP vs. UCaaS: What’s the Difference, and Which Is Right for You?",
+      title: "VoIP vs. UCaaS: What's the Difference, and Which Is Right for You?",
       date: "June 5, 2025",
       readTime: "5 min read",
       category: "Informative",
       imageUrl: "https://blogs.compare-bazaar.com/images/blog9.webp",
       slug: "/Voip-vs-UCaaS",
       views: Math.floor(Math.random() * 500 + 100),
-      likes: Math.floor(Math.random() * 200 + 50)
+      likes: Math.floor(Math.random() * 200 + 50),
+      description: "Understand the differences between VoIP and UCaaS solutions for business communication."
     },
-
-        {
+    {
       id: 10,
       title: "How to Choose the Right Software Vendor for Your SMB",
       date: "June 10, 2025",
@@ -183,48 +172,88 @@ export default function BlogLayout() {
       imageUrl: "https://blogs.compare-bazaar.com/images/blog10.webp",
       slug: "/software-vendor-selection-smb",
       views: Math.floor(Math.random() * 500 + 100),
-      likes: Math.floor(Math.random() * 200 + 50)
+      likes: Math.floor(Math.random() * 200 + 50),
+      description: "Expert tips for selecting the perfect software vendor for your small or medium business."
     },
-    
-            {
+    {
       id: 11,
-      title: "What Makes a Business Software ‘Enterprise-Ready’?",
+      title: "What Makes a Business Software 'Enterprise-Ready'?",
       date: "June 9, 2025",
       readTime: "5 min read",
       category: "Informative",
       imageUrl: "https://blogs.compare-bazaar.com/images/blog11.webp",
       slug: "/enterprise-ready",
       views: Math.floor(Math.random() * 500 + 100),
-      likes: Math.floor(Math.random() * 200 + 50)
-    },
-   
-  ];
+      likes: Math.floor(Math.random() * 200 + 50),
+      description: "Key characteristics that define enterprise-ready business software solutions."
+    }
+  ], []);
 
- const categories = ['All', 'AI', 'MarTech', 'DeFi', 'NFTs', 'Metaverse', 'Security', 'Gaming'];
+  const categories = useMemo(() => ['All', 'AI', 'MarTech', 'DeFi', 'NFTs', 'Metaverse', 'Security', 'Gaming'], []);
   
-  const filteredPosts = activeCategory === 'All' 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === activeCategory);
+  const filteredPosts = useMemo(() => 
+    activeCategory === 'All' 
+      ? blogPosts 
+      : blogPosts.filter(post => post.category === activeCategory),
+    [activeCategory, blogPosts]
+  );
 
   // Calculate mouse position relative to hero section
   const heroRect = heroRef.current?.getBoundingClientRect();
   const mouseX = heroRect ? (mousePosition.x - heroRect.left) / heroRect.width : 0;
   const mouseY = heroRect ? (mousePosition.y - heroRect.top) / heroRect.height : 0;
 
+  // Event handlers with useCallback
+  const handleScroll = useCallback(() => {
+    setScrollPosition(window.scrollY);
+    setIsScrolling(true);
+    clearTimeout(window.scrollEndTimer);
+    window.scrollEndTimer = setTimeout(() => {
+      setIsScrolling(false);
+    }, 100);
+  }, []);
+
+  const handleMouseMove = useCallback((e) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+      clearTimeout(window.scrollEndTimer);
+    };
+  }, [handleScroll, handleMouseMove]);
+
   return (
     <>
- 
+      <Head>
+        <title>Procurement Insights & Vendor Comparison Tips | Compare-Bazaar Blog</title>
+        <meta name="description" content="Explore expert-driven insights on vendor selection, procurement strategies, and cost-saving comparisons. Stay informed with the Compare-Bazaar Blog." />
+        <meta name="keywords" content="procurement, vendor comparison, tech buying, business software, CRM, HR software, VoIP, fleet management" />
+        <meta property="og:title" content="Procurement Insights & Vendor Comparison Tips | Compare-Bazaar Blog" />
+        <meta property="og:description" content="Expert insights on vendor selection and procurement strategies from Compare-Bazaar." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://blogs.compare-bazaar.com" />
+        <meta property="og:image" content="https://blogs.compare-bazaar.com/images/blog-og-image.jpg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://blogs.compare-bazaar.com" />
+      </Head>
+
       <div className="min-h-screen bg-gray-50">
         {/* Enhanced Hero Section with Interactive Effects */}
-        <div 
-  ref={heroRef}
-  className="relative py-16 lg:py-32 overflow-hidden bg-gradient-to-br from-[#000e54] via-[#1a237e] to-[#303f9f]"
-  style={{
-    '--mouse-x': mouseX,
-    '--mouse-y': mouseY
-  }}
->
-
+        <section 
+          ref={heroRef}
+          className="relative py-16 lg:py-32 overflow-hidden bg-gradient-to-br from-[#000e54] via-[#1a237e] to-[#303f9f]"
+          aria-labelledby="hero-heading"
+          style={{
+            '--mouse-x': mouseX,
+            '--mouse-y': mouseY
+          }}
+        >
           {/* Dynamic gradient that follows mouse */}
           <div className="absolute inset-0 overflow-hidden opacity-80">
             <div 
@@ -232,11 +261,12 @@ export default function BlogLayout() {
               style={{
                 backgroundPosition: `calc(var(--mouse-x) * 100%) calc(var(--mouse-y) * 100%)`
               }}
+              aria-hidden="true"
             ></div>
           </div>
           
           {/* Floating particles with depth */}
-          <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
             {[...Array(80)].map((_, i) => {
               const size = Math.random() * 8 + 2;
               const depth = Math.random() * 0.5 + 0.5;
@@ -255,13 +285,14 @@ export default function BlogLayout() {
                     transform: `translateY(${scrollPosition * (1 - depth)}px`,
                     zIndex: Math.floor(depth * 10)
                   }}
+                  aria-hidden="true"
                 />
               );
             })}
           </div>
 
           {/* Interactive tech icons */}
-          <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
             {['🔗', '⚡', '🔮', '🌐', '💎', '🧠', '📊', '🔒', '🚀', '🖥️', '🔑', '💡'].map((icon, i) => {
               const depth = Math.random() * 0.7 + 0.3;
               return (
@@ -279,6 +310,7 @@ export default function BlogLayout() {
                   }}
                   onMouseEnter={() => setHoveredCard(`icon-${i}`)}
                   onMouseLeave={() => setHoveredCard(null)}
+                  aria-hidden="true"
                 >
                   {icon}
                   {hoveredCard === `icon-${i}` && (
@@ -291,26 +323,26 @@ export default function BlogLayout() {
             })}
           </div>
 
-           <div className="container mx-auto px-4 md:px-8 relative z-10 ">
+          <div className="container mx-auto px-4 md:px-8 relative z-10">
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
               {/* Left side - Main heading */}
               <div className="lg:w-2/3 text-center lg:text-left">
-                
-                <h1 className="text-5xl text-white mb-6 leading-tight">
+                <h1 id="hero-heading" className="text-5xl text-white mb-6 leading-tight">
                   <span className="inline-block bg-gradient-to-r from-[#64b5f6] via-[#42a5f5] to-[#90caf9] bg-clip-text text-transparent animate-gradient">
                     Procurement Insights 
                   </span>{' '}
                   <span className="inline-block bg-[#ff8633] bg-clip-text text-transparent animate-gradient delay-100">
-                   & Vendor Comparison Tips | Compare-Bazaar Blog
+                   & Vendor Comparison Tips | Compare-Bazaar Blog
                   </span>
                 </h1>
                 <p className="text-lg text-white/90 mb-8 leading-relaxed max-w-3xl">
-                  Explore expert-driven insights on vendor selection, procurement strategies, and cost-saving comparisons. Stay informed with the Compare-Bazaar Blog
+                  Explore expert-driven insights on vendor selection, procurement strategies, and cost-saving comparisons. Stay informed with the Compare-Bazaar Blog
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <button 
                     onClick={() => document.getElementById('blog-section').scrollIntoView({ behavior: 'smooth' })}
                     className="px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-[#000e54] to-[#1a237e] cursor-pointer text-white font-medium rounded-lg hover:from-[#1a237e] hover:to-[#303f9f] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group relative overflow-hidden interactive"
+                    aria-label="Explore articles"
                   >
                     <span className="relative z-10">🔍 Explore Articles</span>
                     <svg className="w-5 h-5 group-hover:translate-y-0.5 transition-transform relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -318,7 +350,10 @@ export default function BlogLayout() {
                     </svg>
                     <span className="absolute inset-0 bg-gradient-to-r from-[#1a237e] to-[#303f9f] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   </button>
-                  <button className="px-6 py-3 sm:px-8 sm:py-4 bg-[#ff8633] cursor-pointer text-white font-medium rounded-lg hover:from-[#ff8633] hover:to-[#ff9a3c] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group relative overflow-hidden interactive">
+                  <button 
+                    className="px-6 py-3 sm:px-8 sm:py-4 bg-[#ff8633] cursor-pointer text-white font-medium rounded-lg hover:from-[#ff8633] hover:to-[#ff9a3c] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group relative overflow-hidden interactive"
+                    aria-label="Join our community"
+                  >
                     <span className="relative z-10">🌐 Join Community</span>
                     <svg className="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -326,34 +361,26 @@ export default function BlogLayout() {
                     <span className="absolute inset-0 bg-gradient-to-r from-[#ff8633] to-[#ff9a3c] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   </button>
                 </div>
-                
-                {/* Stats with counter animation */}
-                {/* <div className="mt-10 flex flex-wrap gap-6 justify-center lg:justify-start">
-                  <StatCounter endValue={500} label="Published Articles" duration={2} />
-                  <StatCounter endValue={5000} label="Monthly Readers" duration={2.5} />
-                  <StatCounter endValue={100} label="Industry Experts" duration={3} />
-                </div> */}
               </div>
 
               {/* Right side - Subscription Form */}
               <div className="lg:w-1/3 w-full max-w-md">
                 <div className="bg-gradient-to-br from-[#ff9a3c]/20 via-[#ff8633]/15 to-[#ff6f00]/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 shadow-xl transform transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl relative overflow-hidden interactive">
-                  <div className="absolute -top-10 -right-10 w-20 h-20 bg-[#ff8633]/30 rounded-full filter blur-xl"></div>
-                  <div className="absolute -bottom-10 -left-10 w-20 h-20 bg-[#ff6f00]/30 rounded-full filter blur-xl"></div>
+                  <div className="absolute -top-10 -right-10 w-20 h-20 bg-[#ff8633]/30 rounded-full filter blur-xl" aria-hidden="true"></div>
+                  <div className="absolute -bottom-10 -left-10 w-20 h-20 bg-[#ff6f00]/30 rounded-full filter blur-xl" aria-hidden="true"></div>
                   <div className="relative z-10">
                     <div className="text-center mb-6">
-                      <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#ff9a3c] to-[#ff6f00] rounded-full flex items-center justify-center shadow-lg animate-pulse">
+                      <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#ff9a3c] to-[#ff6f00] rounded-full flex items-center justify-center shadow-lg animate-pulse" aria-hidden="true">
                         <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                         </svg>
                       </div>
                       <h3 className="text-base font-bold text-white mb-2">Subscribe to our monthly newsletter.</h3>
-                    
                     </div>
                     
                     {isSubscribed ? (
                       <div className="text-center py-6">
-                        <div className="w-16 h-16 mx-auto mb-4 bg-green-500/30 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-green-400/50 animate-bounce">
+                        <div className="w-16 h-16 mx-auto mb-4 bg-green-500/30 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-green-400/50 animate-bounce" aria-hidden="true">
                           <svg className="w-8 h-8 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                           </svg>
@@ -363,6 +390,7 @@ export default function BlogLayout() {
                         <button 
                           onClick={() => setIsSubscribed(false)} 
                           className="px-4 py-2 bg-gradient-to-r from-[#ff9a3c] to-[#ff6f00] text-white rounded-lg hover:from-[#ff8633] hover:to-[#ff9a3c] transition-all duration-300 border border-white/30 interactive"
+                          aria-label="Subscribe another email"
                         >
                           Subscribe Another Email
                         </button>
@@ -370,7 +398,9 @@ export default function BlogLayout() {
                     ) : (
                       <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="relative">
+                          <label htmlFor="email-subscription" className="sr-only">Email address</label>
                           <input
+                            id="email-subscription"
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -380,14 +410,14 @@ export default function BlogLayout() {
                           />
                           <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                             <svg className="w-5 h-5 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
                           </div>
                         </div>
                         {error && (
                           <div className="text-red-300 text-sm flex items-center">
                             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             {error}
                           </div>
@@ -400,6 +430,7 @@ export default function BlogLayout() {
                               ? 'bg-gray-500/50 text-gray-300 cursor-not-allowed' 
                               : 'bg-[#ff8633] text-white hover:from-[#ff8633] hover:to-[#ff9a3c] shadow-lg hover:shadow-xl'
                           } flex items-center justify-center gap-2 interactive`}
+                          aria-label={isLoading ? "Subscribing..." : "Sign up for newsletter"}
                         >
                           <span className="relative z-10">
                             {isLoading ? (
@@ -433,62 +464,70 @@ export default function BlogLayout() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
         
 
         {/* Main Blog Content */}
-        <div id="blog-section" className="container mx-auto px-4 md:px-8 py-12 md:py-16">
+        <main id="blog-section" className="container mx-auto px-4 md:px-8 py-12 md:py-16">
           <div className="text-center mb-12">
             <h2 className="text-4xl text-gray-800 mb-4">
               <span className="bg-gradient-to-r from-[#ff9a3c] via-[#ff8633] to-[#ff6f00] bg-clip-text text-transparent">
-             Featured Articles & Emerging Tech Insights
+                Featured Articles & Emerging Tech Insights
               </span>
             </h2>
             <p className="text-lg text-gray-800 max-w-2xl mx-auto">Explore expert-written blogs on digital marketing, emerging technologies, and industry trends — designed to help your business grow smarter and faster.</p>
           </div>
 
           {/* Interactive Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map((category) => (
-              <button 
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium shadow-md transition-all duration-300 ${
-                  activeCategory === category
-                    ? 'bg-gradient-to-r from-[#ff9a3c] to-[#ff6f00] text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
-                } flex items-center gap-2 hover:scale-105 interactive`}
-              >
-                {category === 'AI' && '🤖'}
-                {category === 'MarTech' && '🔍'}
-                {category === 'DeFi' && '💸'}
-                {category === 'NFTs' && '🖼️'}
-                {category === 'Metaverse' && '🌌'}
-                {category === 'Security' && '🔒'}
-                {category === 'Gaming' && '🎮'}
-                {category}
-              </button>
-            ))}
-          </div>
+          <nav aria-label="Blog categories">
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              {categories.map((category) => (
+                <button 
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium shadow-md transition-all duration-300 ${
+                    activeCategory === category
+                      ? 'bg-gradient-to-r from-[#ff9a3c] to-[#ff6f00] text-white shadow-lg'
+                      : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                  } flex items-center gap-2 hover:scale-105 interactive`}
+                  aria-current={activeCategory === category ? "page" : undefined}
+                >
+                  {category === 'AI' && '🤖'}
+                  {category === 'MarTech' && '🔍'}
+                  {category === 'DeFi' && '💸'}
+                  {category === 'NFTs' && '🖼️'}
+                  {category === 'Metaverse' && '🌌'}
+                  {category === 'Security' && '🔒'}
+                  {category === 'Gaming' && '🎮'}
+                  {category}
+                </button>
+              ))}
+            </div>
+          </nav>
 
           {/* Enhanced Blog Grid with 3 cards fixed for all screen sizes */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {filteredPosts.map((post, index) => (
-              <BlogCard 
-                key={post.id} 
-                post={post} 
-                index={index}
-                hoveredCard={hoveredCard}
-                setHoveredCard={setHoveredCard}
-                mouseX={mouseX}
-                mouseY={mouseY}
-              />
-            ))}
-          </div>
+          <section aria-label="Blog posts">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {filteredPosts.map((post, index) => (
+                <BlogCard 
+                  key={post.id} 
+                  post={post} 
+                  index={index}
+                  hoveredCard={hoveredCard}
+                  setHoveredCard={setHoveredCard}
+                  mouseX={mouseX}
+                  mouseY={mouseY}
+                />
+              ))}
+            </div>
+          </section>
 
           {/* Enhanced Load More Section */}
           <div className="text-center mt-16">
-            <button className="px-8 py-4 bg-gradient-to-r from-[#ff9a3c] to-[#ff6f00] text-white font-medium rounded-lg hover:from-[#ff8633] hover:to-[#ff9a3c] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 mx-auto group relative overflow-hidden interactive">
+            <button 
+              className="px-8 py-4 bg-gradient-to-r from-[#ff9a3c] to-[#ff6f00] text-white font-medium rounded-lg hover:from-[#ff8633] hover:to-[#ff9a3c] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 mx-auto group relative overflow-hidden interactive"
+              aria-label="Load more articles"
+            >
               <span className="relative z-10">Load More Articles</span>
               <svg className="w-5 h-5 relative z-10 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -496,9 +535,11 @@ export default function BlogLayout() {
               <span className="absolute inset-0 bg-gradient-to-r from-[#ff8633] to-[#ff9a3c] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
             </button>
           </div>
-        </div>
+        </main>
       </div>
       
+
+      {/* gafru */}
       
       {/* Global styles for animations */}
       <style jsx global>{`
@@ -779,7 +820,5 @@ function BlogCard({ post, index, hoveredCard, setHoveredCard, mouseX, mouseY }) 
     
     </a>
   
-    
-    
   );
 }

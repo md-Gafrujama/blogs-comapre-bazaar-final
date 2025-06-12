@@ -182,20 +182,7 @@ const Navbar = () => {
                 </Link>
               </div>
 
-              {/* Resources */}
-              <div className="nav-item-container">
-                <Link
-                  href="#"
-                  className={`nav-item ${isNavItemActive('blog') ? 'active' : ''}`}
-                  onClick={() => handleNavItemClick('blog')}
-                  onMouseEnter={() => handleMouseEnter('blog')}
-                >
-                  Resources
-                  <svg className="dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </Link>
-              </div>
+             
 
               {/* Sales */}
               <div className="nav-item-container">
@@ -211,7 +198,20 @@ const Navbar = () => {
                   </svg>
                 </Link>
               </div>
-
+ {/* Resources */}
+              <div className="nav-item-container">
+                <Link
+                  href="#"
+                  className={`nav-item ${isNavItemActive('blog') ? 'active' : ''}`}
+                  onClick={() => handleNavItemClick('blog')}
+                  onMouseEnter={() => handleMouseEnter('blog')}
+                >
+                  Resources
+                  <svg className="dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </Link>
+              </div>
               {/* Contact Us */}
               <div className="nav-item-container">
                 <Link
@@ -314,30 +314,7 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Resources */}
-            <div className="mobile-menu-item">
-              <button
-                className={`mobile-menu-button-item ${isNavItemActive('blog') ? 'active' : ''}`}
-                onClick={() => handleNavItemClick('blog')}
-              >
-                <span className={`mobile-menu-text ${isNavItemActive('blog') ? 'mobile-menu-text-blue' : ''}`}>
-                  Resources
-                </span>
-                <svg className={`mobile-dropdown-arrow ${activeDropdown === 'blog' ? 'rotated' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </button>
-              {activeDropdown === 'blog' && (
-                <div className="mobile-dropdown-content">
-                  <div className="mobile-dropdown-category">
-                    <ul className="category-items">
-                      <li><Link href="https://www.compare-bazaar.com/WhitePaper" className="category-item-link">WhitePaper</Link></li>
-                      <li><a href="https://blogs.compare-bazaar.com/" className="category-item-link" target="_blank" rel="noopener noreferrer">Blogs</a></li>
-                    </ul>
-                  </div>
-                </div>   
-              )}
-            </div>
+           
 
             {/* Sales */}
             <div className="mobile-menu-item">
@@ -364,7 +341,30 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-
+ {/* Resources */}
+            <div className="mobile-menu-item">
+              <button
+                className={`mobile-menu-button-item ${isNavItemActive('blog') ? 'active' : ''}`}
+                onClick={() => handleNavItemClick('blog')}
+              >
+                <span className={`mobile-menu-text ${isNavItemActive('blog') ? 'mobile-menu-text-blue' : ''}`}>
+                  Resources
+                </span>
+                <svg className={`mobile-dropdown-arrow ${activeDropdown === 'blog' ? 'rotated' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              {activeDropdown === 'blog' && (
+                <div className="mobile-dropdown-content">
+                  <div className="mobile-dropdown-category">
+                    <ul className="category-items">
+                      <li><Link href="https://www.compare-bazaar.com/WhitePaper" className="category-item-link">WhitePaper</Link></li>
+                      <li><a href="https://blogs.compare-bazaar.com/" className="category-item-link" target="_blank" rel="noopener noreferrer">Blogs</a></li>
+                    </ul>
+                  </div>
+                </div>   
+              )}
+            </div>
             {/* Contact Us */}
             <div className="mobile-menu-item">
               <button
