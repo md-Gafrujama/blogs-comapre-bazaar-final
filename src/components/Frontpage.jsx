@@ -1429,7 +1429,6 @@ export default function BlogLayout() {
 
   // Track view counts for posts
   const trackView = useCallback((postId) => {
-    // In a real app, you would send this to your analytics service
     console.log(`Tracking view for post ${postId}`);
   }, []);
 
@@ -1472,7 +1471,7 @@ export default function BlogLayout() {
     }
   }, [email, isLoading]);
 
-  // Memoized blog posts data with updated categories
+  // Blog posts data
   const blogPosts = useMemo(() => [
     {
       id: 1,
@@ -1482,8 +1481,8 @@ export default function BlogLayout() {
       category: "ABM",
       imageUrl: "https://blogs.compare-bazaar.com/images/blog1.jpg",
       slug: "/buyers-content-help",
-      views: Math.floor(Math.random() * 5000 + 1000), // Increased view counts
-      likes: Math.floor(Math.random() * 500 + 100), // Increased like counts
+      views: Math.floor(Math.random() * 5000 + 1000),
+      likes: Math.floor(Math.random() * 500 + 100),
       description: "Learn how comparison content guides tech buyers through their purchasing journey with expert insights."
     },
     {
@@ -1632,7 +1631,6 @@ export default function BlogLayout() {
     }
   ], []);
 
-  // Updated categories as requested
   const categories = useMemo(() => [
     'All', 
     'ABM', 
@@ -1688,7 +1686,7 @@ export default function BlogLayout() {
       </Head>
 
       <div className="min-h-screen bg-gray-50">
-        {/* Hero Section with improved semantics */}
+        {/* Hero Section */}
         <header 
           ref={heroRef}
           className="relative py-16 lg:py-32 bg-gradient-to-br from-[#000e54] via-[#1a237e] to-[#303f9f]"
@@ -1696,7 +1694,6 @@ export default function BlogLayout() {
         >
           <div className="container mx-auto px-4 md:px-8 relative z-10">
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-              {/* Left side - Main heading */}
               <div className="lg:w-2/3 text-center lg:text-left">
                 <h1 id="hero-heading" className="text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight font-bold">
                   <span className="inline-block bg-gradient-to-r from-[#64b5f6] via-[#42a5f5] to-[#90caf9] bg-clip-text text-transparent">
@@ -1837,7 +1834,7 @@ export default function BlogLayout() {
             <p className="text-lg lg:text-xl text-gray-800 max-w-3xl mx-auto">Discover actionable strategies and in-depth analysis on ABM, Advertising, Content Creation, Demand Generation, Intent Data, and Sales to accelerate your business growth.</p>
           </div>
 
-          {/* Category Filter with updated categories */}
+          {/* Category Filter */}
           <nav aria-label="Blog categories">
             <div className="flex flex-wrap justify-center gap-3 mb-12">
               {categories.map((category) => (
@@ -1863,13 +1860,13 @@ export default function BlogLayout() {
             </div>
           </nav>
 
-          {/* Blog Grid with semantic article tags */}
+          {/* Blog Grid */}
           <section aria-label="Blog posts">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {filteredPosts.map((post) => (
                 <article 
                   key={post.id} 
-                  className="group"
+                  className="group h-full"
                   itemScope
                   itemType="https://schema.org/BlogPosting"
                 >
@@ -1882,7 +1879,7 @@ export default function BlogLayout() {
             </div>
           </section>
 
-          {/* Load More Button with animation */}
+          {/* Load More Button */}
           <div className="text-center mt-16">
             <button 
               className="px-8 py-4 bg-gradient-to-r from-[#ff9a3c] to-[#ff6f00] text-white font-medium rounded-lg hover:from-[#ff8633] hover:to-[#ff9a3c] transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 mx-auto hover:scale-105 transform animate-pulse"
@@ -1966,13 +1963,13 @@ function BlogCard({ post, onView }) {
   return (
     <a 
       href={post.slug} 
-      className="block group"
+      className="block group h-full"
       itemProp="url"
       ref={cardRef}
     >
       <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col hover:-translate-y-2 transform">
         {/* Image with lazy loading */}
-        <div className="relative overflow-hidden h-48">
+        <div className="relative overflow-hidden h-48 flex-shrink-0">
           <img 
             src={post.imageUrl} 
             alt={post.title}
@@ -2025,15 +2022,21 @@ function BlogCard({ post, onView }) {
             {post.description}
           </p>
           
-          {/* Footer with read more */}
+          {/* Footer with enhanced read more button */}
           <div className="mt-auto pt-6">
             <div className="flex items-center justify-between">
               <button 
-                className="px-4 py-2 bg-gradient-to-r from-[#ff9a3c] to-[#ff6f00] text-white text-sm font-semibold rounded-lg hover:from-[#ff8633] hover:to-[#ff9a3c] transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 transform"
+                className="relative px-5 py-2.5 bg-gradient-to-r from-[#ff9a3c] to-[#ff6f00] text-white text-sm font-semibold rounded-lg hover:from-[#ff8633] hover:to-[#ff9a3c] transition-all duration-300 shadow-md hover:shadow-lg group/button overflow-hidden"
                 onClick={(e) => e.preventDefault()}
                 aria-label={`Read more about ${post.title}`}
               >
-                Read More
+                <span className="relative z-10 flex items-center gap-1">
+                  Read More
+                  <svg className="w-4 h-4 transition-transform duration-300 group-hover/button:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-[#ff6f00] to-[#ff9a3c] opacity-0 group-hover/button:opacity-100 transition-opacity duration-300"></span>
               </button>
               
               <div className="flex items-center space-x-3">
