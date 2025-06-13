@@ -108,9 +108,7 @@ const Blog9 = () => {
   <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className={`max-w-4xl mx-auto pt-10 pb-2 animate-section transition-all duration-1000 ${isVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       <div className="mb-8">
-        <span className="inline-block px-3 py-1 text-sm font-semibold text-[#0A3761] bg-blue-100 rounded-full mb-4 animate-pulse">
-          HR Technology Guide
-        </span>
+        
         <h1 className="text-3xl md:text-5xl font-bold text-[#0A3761] mb-6 leading-tight bg-gradient-to-r from-[#0A3761] to-blue-600 bg-clip-text text-transparent">
           The Future of B2B Buyer Targeting: AI, Technographics & Real-Time Signals
         </h1>
