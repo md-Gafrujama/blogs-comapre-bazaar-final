@@ -32,10 +32,22 @@ const Blog9 = () => {
     } else {
       try {
         await navigator.clipboard.writeText(currentUrl);
-        alert('Link copied to clipboard!');
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
       } catch (error) {
         alert('Failed to copy link to clipboard.');
       }
+    }
+  };
+
+  // Function to copy link to clipboard
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(currentUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      alert('Failed to copy link to clipboard.');
     }
   };
 
@@ -64,7 +76,6 @@ const Blog9 = () => {
     });
     return () => observer.disconnect();
   }, []);
-
 
   const handleSubscribe = async () => {
     if (!email.trim()) return alert("Please enter a valid email!");
@@ -153,7 +164,7 @@ const Blog9 = () => {
     <section className={`animate-section mt-12 ${isVisible[2] ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
       <h2 className="text-2xl font-bold text-[#0A3761] mb-4">🛠️ Technographics: Precise Targeting</h2>
       <p className="text-gray-700 mb-2">
-       Technographics refers to the data -information about a company’s technology stack and software usage, such as their cloud providers, marketing platforms, security tools etc. This adds in understanding the prospect better.  </p>
+       Technographics refers to the data -information about a company's technology stack and software usage, such as their cloud providers, marketing platforms, security tools etc. This adds in understanding the prospect better.  </p>
        <li className='text-gray-700'>Crafts personalised pitches addressing specific pain points</li>
        <li className='text-gray-700'>It helps in understanding and running competitive displacement campaigns as well as integration opportunities. </li>
        <li className='text-gray-700'>Refines and redefines account-based marketing for relevance and impact.</li>
@@ -306,38 +317,73 @@ In future, those who embraces these advanced methodologies combined with human i
           </div>
         </div>
 
-         {/* Share Section gafru */}
-   <div className="max-w-md mx-auto px-4 py-6">
-  <div className="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100">
-    <div className="flex flex-col items-center mb-6">
-      <div className="relative mb-3">
-        <div className="absolute -inset-2 bg-indigo-100 rounded-full blur opacity-75 animate-pulse"></div>
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-indigo-600 relative" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-        </svg>
-      </div>
-      <p className="text-sm font-medium text-gray-500 tracking-wider">SHARE THIS CONTENT</p>
-    </div>
-    
-    <div className="flex justify-center">
-      {/* Copy Link Button */}
-      <div className="relative group">
-        <button 
-          onClick={() => {
-            navigator.clipboard.writeText(window.location.href);
-            alert('Link copied to clipboard!');
-          }}
-          className="p-4 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition-all duration-300 shadow-lg flex items-center justify-center"
-          aria-label="Copy link"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+        {/* Clean Share Section */}
+        <div className="max-w-4xl mx-auto px-4 py-8">
+          <div className="text-center mb-6">
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">Share this article</h3>
+            <p className="text-gray-600 text-sm">Help others discover these insights</p>
+          </div>
+          
+          <div className="flex justify-center items-center space-x-6">
+            {/* LinkedIn Button */}
+            <button 
+              onClick={shareOnLinkedIn}
+              className="flex items-center space-x-2 bg-[#0A66C2] hover:bg-[#004182] text-white px-4 py-2 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
+              aria-label="Share on LinkedIn"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              <span className="font-medium">LinkedIn</span>
+            </button>
+            
+            {/* Universal Share Button */}
+            <button 
+              onClick={shareContent}
+              className="flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
+              aria-label="Share content"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+              </svg>
+              <span className="font-medium">Share</span>
+            </button>
+            
+            {/* Copy Link Button */}
+            <button 
+              onClick={copyToClipboard}
+              className={`flex items-center space-x-2 ${
+                copied 
+                  ? 'bg-green-600 hover:bg-green-700' 
+                  : 'bg-gray-700 hover:bg-gray-800'
+              } text-white px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg`}
+              aria-label="Copy link"
+            >
+              {copied ? (
+                <>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="font-medium">Copied!</span>
+                </>
+              ) : (
+                <>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                  </svg>
+                  <span className="font-medium">Copy Link</span>
+                </>
+              )}
+            </button>
+          </div>
+          
+          {/* Success Message */}
+          {copied && (
+            <div className="mt-4 text-center">
+              <p className="text-green-600 text-sm font-medium">Link copied to clipboard!</p>
+            </div>
+          )}
+        </div>
       </>
   );
 };
