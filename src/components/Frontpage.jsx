@@ -1612,7 +1612,7 @@ export default function BlogLayout() {
       readTime: "5 min read",
       category: "Advertising",
       imageUrl: "https://blogs.compare-bazaar.com/images/blog12.webp",
-      slug: "/future-of-procurement-2025",
+      slug: "/Cold-email",
       views: Math.floor(Math.random() * 5000 + 1000),
       likes: Math.floor(Math.random() * 500 + 100),
       description: "Explore the latest trends and technologies shaping the future of procurement."
@@ -1624,7 +1624,7 @@ export default function BlogLayout() {
       readTime: "5 min read",
       category: "ABM",
       imageUrl: "https://blogs.compare-bazaar.com/images/blog13.webp",
-      slug: "/evaluate-compare-business-software",
+      slug: "/B2B-buyer-targeting",
       views: Math.floor(Math.random() * 5000 + 1000),
       likes: Math.floor(Math.random() * 500 + 100),
       description: "A step-by-step guide to effectively evaluate and compare business software solutions."
