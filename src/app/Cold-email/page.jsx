@@ -118,7 +118,7 @@ const Blog8 = () => {
         <title>Cold Email Isn’t Dead – It Just Needs to Be Smarter</title>
         <meta property="og:title" content="Cold Email Isn’t Dead – It Just Needs to Be Smarter" />
         <meta property="og:description" content="In 2025, cold email is still alive—but only when it's smart, value-driven, and well-personalized." />
-        <meta property="og:image" content="https://blogs.compare-bazaar.com/images/coldmail.webp" />
+        <meta property="og:image" content="https://blogs.compare-bazaar.com/images/blog12.webp" />
         <meta property="og:url" content={currentUrl} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Compare Bazaar" />
@@ -273,7 +273,7 @@ const Blog8 = () => {
               </div>
               
 
-              
+
               <button
                 onClick={handleSubscribe}
                 disabled={loading}
