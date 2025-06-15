@@ -129,11 +129,14 @@ const Blog8 = () => {
         <div className={`animate-section transition-all duration-1000 ${isVisible[0] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-4xl font-bold text-center text-[#0A3761] mb-2 bg-gradient-to-r from-[#0A3761] to-blue-600 bg-clip-text text-transparent">Cold Email Isn’t Dead – It Just Needs to Be Smarter</h1>
           <p className="text-gray-500 mb-6">Published on June 13, 2025 • 5 min read</p>
-          <img
-            src="https://blogs.compare-bazaar.com/images/blog12.webp"
-            alt="Cold emailing illustration"
-            className="rounded-xl shadow-xl mb-8 w-full object-cover"
-          />
+         <img
+  src="https://blogs.compare-bazaar.com/images/blog12.webp"
+  alt="Cold emailing illustration"
+  className="rounded-xl shadow-xl mb-8 w-full object-cover"
+  width="600" 
+  height="338"
+  loading="lazy"
+/>
 
          
       <h2 className="text-xl font-semibold text-[#0A3761] mt-6 mb-2 flex items-center gap-2">
