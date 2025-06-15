@@ -131,7 +131,7 @@ const Blog6 = () => {
         <title>Tech Buyer And Its Decision Making Journey.</title>
         <meta property="og:title" content="Salesforce vs. HubSpot vs. Zoho: Which CRM Is Best for You?" />
         <meta property="og:description" content="Choosing the right CRM is less about features—and more about fit." />
-        <meta property="og:image" content="https://blogs.compare-bazaar.com/images/blog2.webp" />
+        <meta property="og:image" content="https://blogs.compare-bazaar.com/images/blog6.webp" />
         <meta property="og:url" content={currentUrl} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Compare Bazaar" />

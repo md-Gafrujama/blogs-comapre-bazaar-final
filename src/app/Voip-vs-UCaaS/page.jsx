@@ -440,19 +440,6 @@ const Blog9 = () => {
   </div>
 </div>
 
-          {/* <div className="mt-8 group">
-            <div className="relative overflow-hidden rounded-2xl shadow-xl">
-              <img
-                src="https://blogs.compare-bazaar.com/images/voip.webp"
-                alt="VoIP"
-                className="mx-auto w-full max-w-2xl  object-cover transform transition-all duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                <p className="text-white text-lg font-medium">Making informed tech decisions with Compare Bazaar</p>
-              </div>
-            </div>
-            <p className="text-center text-sm text-gray-500 mt-2">Hover to see details</p>
-          </div> */}
         </div>
 
 
