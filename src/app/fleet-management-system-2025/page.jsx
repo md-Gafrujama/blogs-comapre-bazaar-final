@@ -131,7 +131,7 @@ const Blog5 = () => {
         <title>Tech Buyer And Its Decision Making Journey.</title>
         <meta property="og:title" content="Top 5 Things to Look for in a Fleet Management System in 2025" />
         <meta property="og:description" content="Future-proof your operations with smarter, connected decisions." />
-        <meta property="og:image" content="https://blogs.compare-bazaar.com/images/blog2.webp" />
+        <meta property="og:image" content="https://blogs.compare-bazaar.com/images/blog5.webp" />
         <meta property="og:url" content={currentUrl} />
         <meta property="og:type" content="article" />
         <meta property="og:site_name" content="Compare Bazaar" />
