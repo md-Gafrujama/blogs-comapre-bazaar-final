@@ -272,6 +272,8 @@ const Blog8 = () => {
                 />
               </div>
               
+
+              
               <button
                 onClick={handleSubscribe}
                 disabled={loading}
