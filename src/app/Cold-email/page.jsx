@@ -133,8 +133,8 @@ const Blog8 = () => {
   src="https://blogs.compare-bazaar.com/images/blog12.webp"
   alt="Cold emailing illustration"
   className="rounded-xl shadow-xl mb-8 w-full object-cover"
-  width="400" 
-  height="200"
+  width="300" 
+  height="100"
   loading="lazy"
 />
 
