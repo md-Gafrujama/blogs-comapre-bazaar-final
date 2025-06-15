@@ -706,6 +706,8 @@ const Blog6 = () => {
                 </div>
               </div>
 
+              
+
             </div>
           </div>
         </div>
