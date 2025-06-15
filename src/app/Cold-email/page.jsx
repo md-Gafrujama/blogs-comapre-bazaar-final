@@ -134,7 +134,7 @@ const Blog8 = () => {
   alt="Cold emailing illustration"
   className="rounded-xl shadow-xl mb-8 w-full object-cover"
   width="600" 
-  height="338"
+  height="250"
   loading="lazy"
 />
 
